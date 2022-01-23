@@ -1,6 +1,5 @@
 from floodsystem.stationdata import build_station_list
 import floodsystem.geo as geo
-import numpy as np
 
 def run():
     """Requirements for Task 1A"""
@@ -12,11 +11,10 @@ def run():
     print("Number of stations: {}".format(len(stations)))
     
     #locations = np.array([station.coord for station in stations])
-    #clearprint(locations)
+    #print(locations)
 
-    dist = geo.stations_by_distance(stations, (0,0))
-    for i in dist:
-        print(i)
+    dist = geo.stations_by_distance(stations, (52.2053,0.1218))
+    print(dist[:10])
 
 
 

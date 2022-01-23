@@ -13,6 +13,7 @@ from .station import MonitoringStation
 
 
 def stations_by_distance(stations, p):
+    """stations_by_distance(stations, p) where p is the location (lat, long) and stations is a list of stations, will return the name town and distance from p in an list of tuples"""
     locations = np.array([station.coord for station in stations])
     
     # using haversine formula
@@ -30,6 +31,7 @@ def stations_by_distance(stations, p):
 
 
 def rivers_with_station(stations):
+    """rivers_with_station(stations) returns a sorted list of the rivers stations are on without repeats"""
     stationRivers = set()
     for station in stations:
         stationRivers.add(station.river)
@@ -37,6 +39,7 @@ def rivers_with_station(stations):
     return stationRivers
 
 def stations_by_river(stations):
+    """stations_by_river(stations) returns dictionary of rivers (the key) and a sorted list of stations on that river"""
     stationRivers = set(rivers_with_station(stations)) #sligtly quicker then for sorting later
     riversStations = {} #empty dictionary
     for station in stations:

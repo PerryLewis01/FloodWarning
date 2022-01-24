@@ -1,6 +1,6 @@
 Task1A - preDone
 task1B - Done_p, Add testing
-task1C - todo_f
+task1C - Done_f, Add testing
 task1D - Done_p, Add testing
 task1E - todo_f
 task1F - Done_p, Add testing

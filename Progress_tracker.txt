@@ -2,7 +2,7 @@ Task1A - preDone
 task1B - Done_p, Add testing
 task1C - Done_f, Add testing
 task1D - Done_p, Add testing
-task1E - in progress - f
+task1E - Done_f, add testing
 task1F - Done_p, Add testing
 task2A - Predone
 task2B - Todo_f

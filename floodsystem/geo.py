@@ -5,7 +5,7 @@
 geographical data.
 
 """
-from curses.ascii import NUL
+#from curses.ascii import NUL
 import numpy as np
 from .utils import sorted_by_key  # noqa
 
@@ -56,4 +56,23 @@ def stations_by_river(stations):
 
     return riversStations
         
-        
+
+
+
+def stations_within_radius(stations, centre, r):
+    """stations_within_radius(stations, centre, r) returns an alphabetical list of the stations within radius r of the coordinate, centre"""
+    # Calls stations from previous function
+    stations_dist = stations_by_distance(stations, centre)
+
+    #create list of stations in radius
+    stations_in_r = []
+
+    #adds stations to stations_in_r
+    for i, stations in enumerate(stations):
+        if stations_dist[i][2] < r:
+            stations_in_r.append(stations_dist[i][0])
+    
+    #sort stations_in_r alphabetically
+    stations_in_r.sort()
+    
+    return stations_in_r

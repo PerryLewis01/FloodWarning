@@ -5,11 +5,12 @@
 
 
 
-from curses.ascii import NUL
+#from curses.ascii import NUL
 import numpy as np
 from .utils import sorted_by_key  # noqa
 
 from .station import MonitoringStation
+
 
 from floodsystem.stationdata import build_station_list, update_water_levels
 
@@ -35,3 +36,27 @@ def stations_highest_rel_level(stations, N):
     return difference[:N]
 
 
+
+def stations_level_over_threshold(stations, tol):
+    """returns a list of tuples containing (station, relative water level at the station) 
+    for which the relative water level is over tol. tuples are sorted by relative level in descending order"""
+
+    update_water_levels(stations)
+
+    #set up empty list
+    stations_over_tol = []
+
+    #iterate through all stations and check if relative level is over tol
+    for station in stations:
+        try:
+            #print('tring if')
+            if (station.relative_water_level() > tol):
+                    #print('adding station')
+                    stations_over_tol.append((station.name, station.relative_water_level()))
+        except Exception:
+            #print('failed to add')
+            pass
+    
+    return stations_over_tol
+
+    """(station.relative_water_level() != None) and"""

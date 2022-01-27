@@ -32,7 +32,7 @@ def stations_highest_rel_level(stations, N):
                 # if station.latest_level == None
 
     difference = sorted(difference, key=lambda x: -x[1])
-    print(difference)
+    #print(difference)
     return difference[:N]
 
 

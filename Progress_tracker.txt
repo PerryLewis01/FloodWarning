@@ -1,13 +1,13 @@
-Task1A - preDone
+Task1A - PreDone
 task1B - Done_p, Add testing
 task1C - Done_f, Add testing
 task1D - Done_p, Add testing
 task1E - Done_f, add testing
 task1F - Done_p, Add testing
 task2A - Predone
-task2B - Todo_f
-task2C - Todo_p
-task2D - todo_f
-task2E - Todo_p
+task2B - in_progress_f
+task2C - done_p, add testing
+task2D - Predone
+task2E - done_p, Add tested
 task2F - todo_f
-task2G - todo_p
+task2G - todo_f

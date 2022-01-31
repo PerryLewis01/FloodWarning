@@ -50,7 +50,7 @@ class MonitoringStation:
     def relative_water_level(self):
         """returns latest water level as a fraction of the typical range"""
 
-        if not (self.latest_level == None and self.typical_range_consistent() == False):
+        if (not (self.latest_level == None)) and self.typical_range_consistent():
             temp = (self.latest_level - self.typical_range[0]) / (self.typical_range[1] - self.typical_range[0])
             return float(temp)
         else:

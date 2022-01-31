@@ -1,4 +1,4 @@
-
+# %%
 import datetime
 import numpy as np
 from floodsystem.datafetcher import fetch_measure_levels
@@ -7,9 +7,10 @@ import floodsystem.flood as flood
 import floodsystem.plot as plot
 
 import matplotlib.pyplot as plt
-# %%
+
 def run():
     """Task 2E"""
+    print("run starts")
     # Build list of stations
     stations = build_station_list()
     noStations = 5
@@ -37,10 +38,12 @@ def run():
     plt.title("5 current highest")
     plt.legend(loc="upper left")
     plt.tight_layout()  # This makes sure plot does not cut off date labels
-
+    print("Showing Plot")
     plt.show()
 
 
 if __name__ == "__main__":
     print("*** Task 2E: CUED Part IA Flood Warning System ***")
     run()
+
+# %%

@@ -7,6 +7,8 @@
 
 #from curses.ascii import NUL
 import numpy as np
+
+from floodsystem.geo import stations_by_river
 from .utils import sorted_by_key  # noqa
 
 from .station import MonitoringStation
@@ -61,3 +63,39 @@ def stations_level_over_threshold(stations, tol):
     stations_over_tol = sorted(stations_over_tol, key = lambda x:-x[1])
     
     return stations_over_tol
+
+
+
+
+
+
+
+
+
+
+
+import numpy as np
+
+
+def assess_risk(stations):
+    """assess_risk(stations), returns a (station.name, station.level, station risk) in order of risk """
+
+    #computing current level risk
+    current_levels = np.array(stations_highest_rel_level(stations, len(stations)))
+    
+    #1m above max has a risk of 1, 0.4 m below max has risk of 0
+    levelRisk = current_levels[:, 1].astype(float)
+    levelRisk = np.array((1)/(1.4)*(levelRisk + 0.4))
+    
+
+    #relative level risk
+    #relative level 1.5 risk 1, relative level 0 risk 0
+
+    rellevels = np.array([station.relative_water_level() for station in stations])
+    rellevels = np.array(1/(1.5)*(rellevels))
+
+
+
+
+
+

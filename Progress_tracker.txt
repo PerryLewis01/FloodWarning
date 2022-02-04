@@ -5,9 +5,9 @@ task1D - Done_p, Add testing
 task1E - Done_f, add testing
 task1F - Done_p, Add testing
 task2A - Predone
-task2B - in_progress_f
+task2B - Done_f, add testing
 task2C - done_p, add testing
 task2D - Predone
-task2E - done_p, Add tested
+task2E - done_p, Add testing
 task2F - todo_f
-task2G - todo_f
+task2G - todo_p

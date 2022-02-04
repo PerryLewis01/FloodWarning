@@ -46,5 +46,5 @@ def test_rivers_by_station_number():
     #Felix write your own tests
     test_list = geo.rivers_by_station_number(stations, 10)
     assert test_list[0][1] >= test_list[1][1]
-    assert test_list[0][1] == ['River Thames']
+    assert test_list[0][0] == 'River Thames'
     

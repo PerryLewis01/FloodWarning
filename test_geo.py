@@ -44,4 +44,7 @@ def test_stations_within_radius():
 
 def test_rivers_by_station_number():
     #Felix write your own tests
-    assert geo.rivers_by_station_number[0][1] >= geo.rivers_by_station_number[1][1]
+    test_list = geo.rivers_by_station_number(stations, 10)
+    assert test_list[0][1] >= test_list[1][1]
+    #add more tests
+    

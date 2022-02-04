@@ -1,12 +1,12 @@
 Task1A - PreDone
 task1B - Done_p, Added testing
-task1C - Done_f, Add testing
+task1C - Done_f, Added testing   --   check if good enough
 task1D - Done_p, Added testing
-task1E - Done_f, add testing ( fix - email)
+task1E - Done_f, Added testing ( fixed but needs checking) (check testing adequate)
 task1F - Done_p, Added testing
 task2A - Predone
-task2B - in_progress_f
-task2C - done_p, added testing
+task2B - Done_f   (check definitely done)
+task2C - done_p, Added testing
 task2D - Predone
 task2E - done_p, Add testing
 task2F - todo_f

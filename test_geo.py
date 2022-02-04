@@ -39,8 +39,8 @@ def test_stations_by_river():
 
 def test_stations_within_radius():
     assert len(geo.stations_within_radius(stations, (52.2053, 0.1218), 0)) == 0
-    assert len(geo.stations_within_radius(stations, 52.2053, 0.1218, 10)) > 0
-    assert len(geo.stations_within_radius(stations, 52.2053, 0.1218, 500)) > len(geo.stations_within_radius(stations, 52.2053, 0.1218, 2))
+    assert len(geo.stations_within_radius(stations, (52.2053, 0.1218), 10)) > 0
+    assert len(geo.stations_within_radius(stations, (52.2053, 0.1218), 500)) > len(geo.stations_within_radius(stations, 52.2053, 0.1218, 2))
 
 def test_rivers_by_station_number():
     #Felix write your own tests

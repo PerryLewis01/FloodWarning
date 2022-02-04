@@ -8,6 +8,6 @@ task2A - Predone
 task2B - in_progress_f
 task2C - done_p, added testing
 task2D - Predone
-task2E - done_p, Add tested
+task2E - done_p, Add testing
 task2F - todo_f
-task2G - todo_f
+task2G - todo_p

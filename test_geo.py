@@ -39,7 +39,7 @@ def test_stations_by_river():
 
 def test_stations_within_radius():
     #Felix write your own tests
-    assert geo.stations_within_radius(stations, 52.2053, 0.1218, 0) == 0
+    assert geo.stations_within_radius(stations, 52.2053, 0.1218, 0) < 50
     assert geo.stations_within_radius(stations, 52.2053, 0.1218, 10) > 0
     assert geo.stations_within_radius(stations, 52.2053, 0.1218, 500) > geo.stations_within_radius(stations, 52.2053, 0.1218, 2)
 

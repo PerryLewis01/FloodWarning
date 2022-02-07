@@ -90,8 +90,11 @@ def assess_risk(stations):
     #relative level risk
     #relative level 1.5 risk 1, relative level 0 risk 0
 
-    rellevels = np.array([station.relative_water_level() for station in stations])
-    rellevels = np.array(1/(1.5)*(rellevels) )
+    rellevels = np.array([station.relative_water_level()/1.5 if station.relative_water_level() != None else station.relative_water_level() for station in stations])
+
+    np.polyfit()
+
+
 
 
 

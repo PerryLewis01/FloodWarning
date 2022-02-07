@@ -25,3 +25,35 @@ def test_create_monitoring_station():
     assert s.typical_range == trange
     assert s.river == river
     assert s.town == town
+
+
+
+def test_relative_water_level():
+
+    Test_station = [MonitoringStation(
+        station_id=1,
+        measure_id=10,
+        label='test_station',
+        coord=(float(0.1), float(0.1)),
+        typical_range=(1.2, 1.5),
+        river='River_test',
+        town='test_town'),MonitoringStation(
+        station_id=2,
+        measure_id=20,
+        label='test_station_2',
+        coord=(float(50), float(0)),
+        typical_range=(15, 2),
+        river='River_test',
+        town='test_town')]
+
+    #station with typical high
+    Test_station[0].latest_level = 1.5
+
+    assert MonitoringStation.relative_water_level(Test_station[0]) == 1
+
+    #station with typical low
+    Test_station[0].latest_level = 1.2
+
+    assert MonitoringStation.relative_water_level(Test_station[0]) == 0
+
+    assert MonitoringStation.relative_water_level(Test_station[1]) == None

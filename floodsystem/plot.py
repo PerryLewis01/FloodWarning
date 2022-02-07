@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 import matplotlib
 from .analysis import polyfit
-
+import numpy as np
 
 
 

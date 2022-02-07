@@ -26,7 +26,7 @@ def stations_by_distance(stations, p):
     )
     
     #now sort via distance with names and county
-    distanceandTown = sorted([(station.name, station.town, distanceToP[i]) for i, station in enumerate(stations)], key = lambda x:x[2])
+    distanceandTown = sorted([(station, distanceToP[i]) for i, station in enumerate(stations)], key = lambda x:x[1])
     return distanceandTown
 
 
@@ -69,8 +69,8 @@ def stations_within_radius(stations, centre, r):
 
     #adds stations to stations_in_r
     for i, stations in enumerate(stations):
-        if stations_dist[i][2] < r:
-            stations_in_r.append(stations_dist[i][0])
+        if stations_dist[i][1] < r:
+            stations_in_r.append(stations_dist[i][0].name)
         else:
             break
     

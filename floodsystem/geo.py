@@ -102,8 +102,8 @@ def rivers_by_station_number(stations, N):
     #sort what happens if nth entry has equal sumber of stations
     list_complete = False
     while list_complete == False:
-        if rivers_stations[-N][1] == rivers_stations[-(N+1)]:
-            output.append(rivers_stations[-(N+1)])
+        if rivers_stations[N][1] == rivers_stations[N+1][1]:
+            output.append(rivers_stations[N+1])
             
         else:
             list_complete = True

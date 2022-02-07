@@ -27,6 +27,7 @@ def stations_by_distance(stations, p):
     
     #now sort via distance with names and county
     distanceandTown = sorted([(station, distanceToP[i]) for i, station in enumerate(stations)], key = lambda x:x[1])
+    # possibel correct version of above list :         distanceandTown = sorted([(station.name, station.town, distanceToP[i]) for i, station in enumerate(stations)], key = lambda x:x[2])
     return distanceandTown
 
 

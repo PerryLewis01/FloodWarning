@@ -1,11 +1,11 @@
 Task1A - PreDone
 task1B - Done_p, Added testing
-task1C - Done_f, Added testing   --   check if good enough
+task1C - Done_f, Added testing
 task1D - Done_p, Added testing
-task1E - Done_f, Added testing ( fixed but needs checking) (check testing adequate)
+task1E - Done_f, Added testing
 task1F - Done_p, Added testing
 task2A - Predone
-task2B - Done_f
+task2B - Done_f    CHECK SYNTAX FOR TEST
 task2C - done_p, Added testing
 task2D - Predone
 task2E - done_p, Add testing

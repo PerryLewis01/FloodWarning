@@ -16,8 +16,8 @@ def run():
     stations_to_plot = (stations_level_over_threshold(stations,0.1))[-5:]
 
 
-    print(type(stations_to_plot))
-    print(type(stations_to_plot[0][0]))
+    print(stations_to_plot)
+    print(stations_to_plot[0][0])
 
     #highest_relative_level_stations = (stations_level_over_threshold(stations,0))[-5:]
     #print(type(highest_relative_level_stations[0][0]))
@@ -34,7 +34,7 @@ def run():
     for item in stations_to_plot:
         #Find how to call measure id
         station = item[0]
-        dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=2))
+        dates, levels = fetch_measure_levels(station.measure_id(), dt=datetime.timedelta(days=2))
         plot_water_level_with_fit(station, dates, levels, 4)         
 
     run()

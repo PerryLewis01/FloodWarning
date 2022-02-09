@@ -9,8 +9,6 @@ level the higher the assumed risk of flooding (if in flood flood level high)
 relative level, if the level is relatively high a similar equation is used
 
 
-predicted water level, using a polyfit for the past data predicting the future risk
-
 """
 
 from floodsystem.stationdata import build_station_list, update_water_levels

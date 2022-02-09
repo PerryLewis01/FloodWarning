@@ -52,18 +52,19 @@ def stations_level_over_threshold(stations, tol):
 
     #iterate through all stations and check if relative level is over tol
     for station in stations:
-        try:
-            #print('tring if')
-            if (station.relative_water_level() > tol):
-                    #print('adding station')
-                    stations_over_tol.append((station.name, station.relative_water_level()))
-        except Exception:
-            #print('failed to add')
-            pass
+        #print('tring if')
+        if station.typical_range_consistent():
+            if (station.typical_range[0] != None) and (station.relative_water_level() != None):
+                if station.typical_range[0] < station.typical_range[1]:
+                    if (station.relative_water_level() > tol):
+                        #print('adding station')
+                        stations_over_tol.append((station.name, station.relative_water_level()))
 
+    
     #sort by relative level
     stations_over_tol = sorted(stations_over_tol, key = lambda x:-x[1])
     
+
     return stations_over_tol
 
 

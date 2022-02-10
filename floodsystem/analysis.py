@@ -12,8 +12,6 @@ def polyfit(dates, levels, p):
     d0 = x[0]
     x -= d0
 
-    #y = levels
-
     # Find coefficients of best-fit polynomial f(x) of degree p
     p_coeff = np.polyfit(x, levels, p)
 

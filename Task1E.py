@@ -7,7 +7,7 @@ def run():
     # Build list of stations
     stations = build_station_list()
 
-    print(geo.rivers_by_station_number(stations, 9))
+    print(geo.rivers_by_station_number(stations, 10))
 
 
 if __name__ == "__main__":

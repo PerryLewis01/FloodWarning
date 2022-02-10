@@ -8,6 +8,7 @@
 #from curses.ascii import NUL
 import string
 from turtle import st
+from unittest import skip
 import numpy as np
 
 from floodsystem.geo import stations_by_river
@@ -32,8 +33,10 @@ def stations_highest_rel_level(stations, N):
                     difference.append((station.name, (station.latest_level - station.typical_range[1])))
 
             except Exception:
-                pass
+                difference.append((station.name, -5000))
                 # if station.latest_level == None
+        else:
+            difference.append((station.name, -5000))
 
     difference = sorted(difference, key=lambda x: -x[1])
     #print(difference)
@@ -82,14 +85,14 @@ import numpy as np
 def assess_risk(stations):
     """assess_risk(stations), returns a (station.name, station.level, station risk) in order of risk """
 
-    dtype = [('stationName', 'S10'), ('value', float)]
+    dtype = [('stationName', str), ('value', float)]
     #computing current level risk
-    current_levels = np.array(stations_highest_rel_level(stations, len(stations)))
+    current_levels = np.array(stations_highest_rel_level(stations, len(stations)+1))
     
     #1m above max has a risk of 1, 0.4 m below max has risk of 0
     levelRisk = current_levels[:, 1].astype(float)
     levelRisk = (1)/(1.4)*(levelRisk + 0.4)
-    levelRisk = np.array([[current_levels[i, 0].astype(str), levelRisk[i].astype(float)] for i in range(len(levelRisk))], dtype=dtype)
+    levelRisk = np.array([[current_levels[i, 0].astype(str), levelRisk[i]] for i in range(len(levelRisk))])
     
 
     #relative level risk
@@ -101,10 +104,35 @@ def assess_risk(stations):
 
     #levelRisk = sorted(levelRisk, key=lambda x: x[0])
     #rellevels = sorted(rellevels, key=lambda x: x[0])
-    print(levelRisk[:,1])
-    print(rellevels[:,1])
-    StationsAndRisk = np.array([[levelRisk[i, 0], ((levelRisk[i,1] + rellevels[i,1])/2)]  if rellevels[i,1] != None else [levelRisk[i, 0], levelRisk[i,1]] for i in range(len(stations)) ])
+    print(levelRisk.shape)
+    print(rellevels.shape)
+    print(len(stations))
+    StationsAndRisk = np.empty((len(levelRisk),2), dtype=object)
 
+    skipstationcounter = 0
+
+    for i in range(len(levelRisk)):
+        StationsAndRisk[i, 0] = levelRisk[i, 0]
+        if (levelRisk[i,0] == rellevels[i+skipstationcounter,0]):
+            if rellevels[i+skipstationcounter,1] != None:
+                #print(levelRisk[i,1], rellevels[i,1])
+                StationsAndRisk[i,1] = ((float(levelRisk[i,1]) + float(rellevels[i+skipstationcounter,1]))/2)
+            else:
+                StationsAndRisk[i,1] = (levelRisk[i,1])
+        else:
+            print("ERROR!!! STATIONS dont match")
+            print(levelRisk[i,0], rellevels[i+skipstationcounter,0])
+            print("in position", i)
+
+            StationsAndRisk[i,1] = levelRisk[i,1]
+            skipstationcounter += 1
+
+            while(levelRisk[i,0] != rellevels[i+skipstationcounter,0]):
+                #print(levelRisk[i+skipstationcounter,0], rellevels[i,0])
+                skipstationcounter += 1
+            
+    
+    
     print(StationsAndRisk)
 
 

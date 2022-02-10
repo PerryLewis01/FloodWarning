@@ -13,30 +13,19 @@ def run():
     update_water_levels(stations)
 
     #get highest 5 stations
-    stations_to_plot = (stations_level_over_threshold(stations,0.1))[-5:]
+    stations_to_plot = (stations_level_over_threshold(stations,0.1))[0:4]
 
-
-    print(stations_to_plot)
-    print(stations_to_plot[0][0])
-
-    #highest_relative_level_stations = (stations_level_over_threshold(stations,0))[-5:]
-    #print(type(highest_relative_level_stations[0][0]))
-
-    """
-    #check there are actually 5 stations 
-    while len(stations_to_plot) > 5:
-        #remove last entry
-        stations_to_plot.pop()
-    """
-
-    #station_list.append(station)
+    count = 0
 
     for item in stations_to_plot:
         #Find how to call measure id
         station = item[0]
-        dates, levels = fetch_measure_levels(station.measure_id(), dt=datetime.timedelta(days=2))
+        #print(station)
+        dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=2))
         plot_water_level_with_fit(station, dates, levels, 4)         
-
+        count += 1
+        if count == 5:
+            break
     run()
 
 

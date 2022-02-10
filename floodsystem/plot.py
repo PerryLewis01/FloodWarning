@@ -41,5 +41,10 @@ def plot_water_level_with_fit(station, dates, levels, p):
         plt.plot(x1, np.linspace(station.typical_range[1],station.typical_range[1],30),"-r")
 
         #add titles and labels
+        plt.xlabel("Number of days ago")
+        plt.ylabel("water level")
+        plt.title("Water level for last {} days for {}".format(round(abs(dates[-1]), 1), station.name))
+        plt.legend(loc="lower right")
+
 
         plt.show()

@@ -61,7 +61,7 @@ def stations_level_over_threshold(stations, tol):
                 if station.typical_range[0] < station.typical_range[1]:
                     if (station.relative_water_level() > tol):
                         #print('adding station')
-                        stations_over_tol.append((station.name, station.relative_water_level()))
+                        stations_over_tol.append((station, station.relative_water_level()))
 
     
     #sort by relative level

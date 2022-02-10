@@ -14,6 +14,7 @@ import floodsystem.flood as flood
 import floodsystem.plot as plot
 import matplotlib.pyplot as plt
 
+"""
 def test_plot_water_level_with_fit():
     
     #create stations to test
@@ -31,6 +32,7 @@ def test_plot_water_level_with_fit():
 
     #run tests
     pass
+"""
 
 def test_plot_water_levels():
 

@@ -37,4 +37,8 @@ def run():
     for data in flood_data:
         print(data[0], data[1], data [2])"""
 
-run()
+
+
+if __name__ == "__main__":
+    print("*** Task 2G: CUED Part IA Flood Warning System ***")
+    run()

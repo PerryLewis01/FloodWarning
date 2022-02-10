@@ -14,7 +14,11 @@ def run():
     #print(locations)
 
     dist = geo.stations_by_distance(stations, (52.2053,0.1218))
-    print(dist[:10])
+    for i in range(10):
+        print(dist[i][0].name, dist[i][1])
+        
+
+    #print(dist[:10])
 
 
 

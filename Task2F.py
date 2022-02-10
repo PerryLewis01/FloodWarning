@@ -18,11 +18,12 @@ def run():
     count = 0
 
     for item in stations_to_plot:
-        #Find how to call measure id
+        
         station = item[0]
-        #print(station)
+        
         dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=2))
-        plot_water_level_with_fit(station, dates, levels, 4)         
+        plot_water_level_with_fit(station, dates, levels, 4) 
+                
         count += 1
         if count == 5:
             break

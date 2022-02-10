@@ -48,7 +48,7 @@ def stations_level_over_threshold(stations, tol):
     """returns a list of tuples containing (station, relative water level at the station) 
     for which the relative water level is over tol. tuples are sorted by relative level in descending order"""
 
-    update_water_levels(stations)
+    #update_water_levels(stations)
 
     #set up empty list
     stations_over_tol = []
@@ -56,13 +56,13 @@ def stations_level_over_threshold(stations, tol):
     #iterate through all stations and check if relative level is over tol
     for station in stations:
         #print('tring if')
-        if station.typical_range_consistent():
-            if (station.typical_range[0] != None) and (station.relative_water_level() != None):
-                if station.typical_range[0] < station.typical_range[1]:
-                    if (station.relative_water_level() > tol):
-                        #print('adding station')
-                        stations_over_tol.append((station, station.relative_water_level()))
-
+        if station.typical_range_consistent() and (station.relative_water_level() != None):
+            #print("consistent", station)
+            if (station.relative_water_level() > tol):
+                #print('adding station' , station)
+                stations_over_tol.append((station, station.relative_water_level()))
+        else:
+            pass
     
     #sort by relative level
     stations_over_tol = sorted(stations_over_tol, key = lambda x:-x[1])

@@ -1,4 +1,6 @@
 from cgi import test
+from distutils.command.build import build
+from turtle import update
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.station import MonitoringStation
 import floodsystem.flood as flood
@@ -38,7 +40,6 @@ def test_stations_highest_rel_level():
 
 
 def test_stations_level_over_threshold():
-    #FIXXXXXX
     Test_station[0].latest_level = 10
     Test_station[1].latest_level = 255
     Test_station[2].latest_level = 255
@@ -48,3 +49,11 @@ def test_stations_level_over_threshold():
 
     assert flood.stations_level_over_threshold(Test_station, 1.1)[0][1] > flood.stations_level_over_threshold(Test_station, 1.1)[1][1]
 
+
+
+#Test for 2G
+
+def test_assess_risk():
+    stations = build_station_list()
+    update_water_levels(stations)
+    assert len(flood.assess_risk(stations)) >= len(stations) - 1

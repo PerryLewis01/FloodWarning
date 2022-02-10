@@ -4,6 +4,7 @@ from turtle import update
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.station import MonitoringStation
 import floodsystem.flood as flood
+import numpy as np
 #Data to test with
 stations = build_station_list()
 update_water_levels(stations)
@@ -56,4 +57,7 @@ def test_stations_level_over_threshold():
 def test_assess_risk():
     stations = build_station_list()
     update_water_levels(stations)
-    assert len(flood.assess_risk(stations)) >= len(stations) - 1
+    assert len(flood.assess_risk(stations)) > 0
+    assert type(flood.assess_risk(stations)) == np.ndarray
+
+test_assess_risk()

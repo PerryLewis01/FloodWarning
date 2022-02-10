@@ -6,6 +6,8 @@
 
 
 #from curses.ascii import NUL
+import string
+from turtle import st
 import numpy as np
 
 from floodsystem.geo import stations_by_river
@@ -77,24 +79,36 @@ def stations_level_over_threshold(stations, tol):
 
 import numpy as np
 
-
 def assess_risk(stations):
     """assess_risk(stations), returns a (station.name, station.level, station risk) in order of risk """
 
+    dtype = [('stationName', 'S10'), ('value', float)]
     #computing current level risk
     current_levels = np.array(stations_highest_rel_level(stations, len(stations)))
     
     #1m above max has a risk of 1, 0.4 m below max has risk of 0
     levelRisk = current_levels[:, 1].astype(float)
-    levelRisk = np.array((1)/(1.4)*(levelRisk + 0.4))
+    levelRisk = (1)/(1.4)*(levelRisk + 0.4)
+    levelRisk = np.array([[current_levels[i, 0].astype(str), levelRisk[i].astype(float)] for i in range(len(levelRisk))], dtype=dtype)
     
 
     #relative level risk
     #relative level 1.5 risk 1, relative level 0 risk 0
+    rellevels = np.array([[station.name, station.relative_water_level()/1.5] if station.relative_water_level() != None else [station.name, station.relative_water_level()] for station in stations])
+    
+    levelRisk = levelRisk[np.argsort(levelRisk[:,0])]
+    rellevels = rellevels[np.argsort(rellevels[:,0])]
 
-    rellevels = np.array([station.relative_water_level()/1.5 if station.relative_water_level() != None else station.relative_water_level() for station in stations])
+    #levelRisk = sorted(levelRisk, key=lambda x: x[0])
+    #rellevels = sorted(rellevels, key=lambda x: x[0])
+    print(levelRisk[:,1])
+    print(rellevels[:,1])
+    StationsAndRisk = np.array([[levelRisk[i, 0], ((levelRisk[i,1] + rellevels[i,1])/2)]  if rellevels[i,1] != None else [levelRisk[i, 0], levelRisk[i,1]] for i in range(len(stations)) ])
 
-    np.polyfit()
+    print(StationsAndRisk)
+
+
+    
 
 
 

@@ -104,9 +104,9 @@ def assess_risk(stations):
 
     #levelRisk = sorted(levelRisk, key=lambda x: x[0])
     #rellevels = sorted(rellevels, key=lambda x: x[0])
-    print(levelRisk.shape)
-    print(rellevels.shape)
-    print(len(stations))
+    #print(levelRisk.shape)
+    #print(rellevels.shape)
+    #print(len(stations))
     StationsAndRisk = np.empty((len(levelRisk),2), dtype=object)
 
     skipstationcounter = 0
@@ -120,9 +120,9 @@ def assess_risk(stations):
             else:
                 StationsAndRisk[i,1] = (levelRisk[i,1])
         else:
-            print("ERROR!!! STATIONS dont match")
-            print(levelRisk[i,0], rellevels[i+skipstationcounter,0])
-            print("in position", i)
+            #print("ERROR!!! STATIONS dont match")
+            #print(levelRisk[i,0], rellevels[i+skipstationcounter,0])
+            #print("in position", i)
 
             StationsAndRisk[i,1] = levelRisk[i,1]
             skipstationcounter += 1

@@ -23,8 +23,14 @@ def run():
     # Update latest level data for all stations
     update_water_levels(stations)
 
-    flood.assess_risk(stations)
-    
+    output = flood.assess_risk(stations)
+    print(output)
+
+    for data in output:
+        if data[1] == 'High':
+            print(data)
+
+
     """
     flood_data = flood.assess_risk(stations)
 

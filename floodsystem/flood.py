@@ -83,7 +83,7 @@ def stations_level_over_threshold(stations, tol):
 import numpy as np
 
 def assess_risk(stations):
-    """assess_risk(stations), returns a (station.name, station.level, station risk) in order of risk """
+    """assess_risk(stations), returns a (station.name, station risk) in order of risk """
 
     dtype = [('stationName', str), ('value', float)]
     #computing current level risk
@@ -131,9 +131,21 @@ def assess_risk(stations):
                 #print(levelRisk[i+skipstationcounter,0], rellevels[i,0])
                 skipstationcounter += 1
             
+    #output array generation
+    output = np.empty((len(StationsAndRisk), 2), dtype=object)
+    for i, value in enumerate(StationsAndRisk):
+        output[i,0] = value[0]
+        if float(value[1]) > 0.7:
+            output[i,1] = "High"
+        elif float(value[1]) > 0.4:
+            output[i,1] = "Moderate"
+        else:
+            output[i,1] = "Low"
     
+    return(output)
+
     
-    print(StationsAndRisk)
+    #print(StationsAndRisk)
 
 
     

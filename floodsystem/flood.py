@@ -22,6 +22,13 @@ from floodsystem.stationdata import build_station_list, update_water_levels
 
 def stations_highest_rel_level(stations, N):
     """stations_highest_rel_level(stations, N) returns a list of N stations in which the water level is closest to the maximum"""
+    rel_levels = stations_level_over_threshold(stations, -50)
+
+    return rel_levels[:N]
+
+
+def stations_highest_rel_level_wrong(stations, N):
+    """stations_highest_rel_level_wrong(stations, N) returns a list of N stations in which the water level is closest to the maximum"""
     difference = []
     if stations[0].latest_level == None:
         update_water_levels(stations)
@@ -87,7 +94,7 @@ def assess_risk(stations):
 
     dtype = [('stationName', str), ('value', float)]
     #computing current level risk
-    current_levels = np.array(stations_highest_rel_level(stations, len(stations)+1))
+    current_levels = np.array(stations_highest_rel_level_wrong(stations, len(stations)+1))
     
     #1m above max has a risk of 1, 0.4 m below max has risk of 0
     levelRisk = current_levels[:, 1].astype(float)

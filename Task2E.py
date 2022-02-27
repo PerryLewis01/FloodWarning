@@ -28,7 +28,7 @@ def run():
     # Fetch data over past 2 days
     dt = 10
     dates = np.empty(noStations+1, dtype=object)
-    levels = [None, None ,None ,None ,None,None, None ,None ,None ,None]
+    levels = np.empty(noStations+1, dtype=object)
     for i in range(len(station_list)):
         dates[i], levels[i] = fetch_measure_levels(
             station_list[i].measure_id, dt=datetime.timedelta(days=dt))

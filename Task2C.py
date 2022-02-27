@@ -16,7 +16,7 @@ def run():
     
     inflood = flood.stations_highest_rel_level(stations, 10)
     for data in inflood:
-        print(data[0], data[1])
+        print(data[0].name, data[1])
     
 
 

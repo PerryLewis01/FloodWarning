@@ -142,7 +142,9 @@ def assess_risk(stations):
     output = np.empty((len(StationsAndRisk), 2), dtype=object)
     for i, value in enumerate(StationsAndRisk):
         output[i,0] = value[0]
-        if float(value[1]) > 0.7:
+        if float(value[1]) > 1:
+            output[i,1] = "Severe"
+        elif float(value[1]) > 0.7:
             output[i,1] = "High"
         elif float(value[1]) > 0.4:
             output[i,1] = "Moderate"

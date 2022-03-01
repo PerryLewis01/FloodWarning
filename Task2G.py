@@ -27,10 +27,12 @@ def run():
     print("Risk of all stations at the moment")
     print(output)
 
-    print("\nStations Currently at High Risk of Flood\n")
+    print("\nStations Currently at Severe Risk of Flood\n")
     for data in output:
-        if data[1] == 'High':
+        if data[1] == 'Severe':
             print(data)
+
+    
 
 
     """

@@ -32,14 +32,6 @@ def run():
         if data[1] == 'Severe':
             print(data)
 
-    
-
-
-    """
-    flood_data = flood.assess_risk(stations)
-
-    for data in flood_data:
-        print(data[0], data[1], data [2])"""
 
 
 

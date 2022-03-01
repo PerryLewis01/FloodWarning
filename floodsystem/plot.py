@@ -47,7 +47,7 @@ def plot_water_level_with_fit(station, dates, levels, p):
         #add titles and labels
         plt.xlabel("Number of days ago")
         plt.ylabel("water level")
-        plt.title("Water level for last {} days for {}".format(round(abs(dates[-1]), 1), station.name))
+        plt.title("Water level for last {} days for {}".format(round(abs(dates[-1]), 0), station.name))
         plt.legend(loc="lower right")
 
         plt.show()

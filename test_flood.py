@@ -37,7 +37,7 @@ def test_stations_highest_rel_level():
     #assert len(flood.stations_highest_rel_level(stations, 10)) == 10
     Test_station[0].latest_level = 1.4
     Test_station[1].latest_level = 255
-    assert flood.stations_highest_rel_level(Test_station, 1) == [('test_station', -0.10000000000000009)]
+    assert flood.stations_highest_rel_level(Test_station, 1) == [(Test_station[0], 0.6666666666666664)]
 
 
 def test_stations_level_over_threshold():
